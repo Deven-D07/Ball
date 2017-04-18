@@ -18,6 +18,10 @@ namespace Ball
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D samus, spritesheet;
+        int score;
+        Sprite ball;
+        
 
         public Game1()
         {
@@ -46,7 +50,12 @@ namespace Ball
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            samus = Content.Load<Texture2D>("samus");
+            spritesheet = Content.Load<Texture2D>("MorphBall");
+            score = 0;
+            ball = new Sprite(new Vector2(0, 0), spritesheet, new Rectangle(0, 510, 500, 500), new Vector2(30, 80));
 
+           
             // TODO: use this.Content to load your game content here
         }
 
@@ -82,7 +91,11 @@ namespace Ball
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
+            spriteBatch.Draw(samus, Vector2.Zero, Color.White);
+            ball.Draw(spriteBatch);
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
