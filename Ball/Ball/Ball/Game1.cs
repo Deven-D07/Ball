@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -21,12 +22,14 @@ namespace Ball
         Texture2D samus, spritesheet;
         int score;
         Sprite ball;
+        Boolean clicked = false;
         
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            this.IsMouseVisible = true;
         }
 
         /// <summary>
@@ -53,7 +56,7 @@ namespace Ball
             samus = Content.Load<Texture2D>("samus");
             spritesheet = Content.Load<Texture2D>("MorphBall");
             score = 0;
-            ball = new Sprite(new Vector2(0, 0), spritesheet, new Rectangle(0, 510, 500, 500), new Vector2(30, 80));
+            ball = new Sprite(new Vector2(380, 0), spritesheet, new Rectangle(0,0 , 70, 70), new Vector2(0, 80));
 
            
             // TODO: use this.Content to load your game content here
@@ -80,6 +83,49 @@ namespace Ball
                 this.Exit();
 
             // TODO: Add your update logic here
+
+            ball.Velocity += new Vector2(0, 30);
+
+            if (ball.Location.Y > this.Window.ClientBounds.Height - ball.BoundingBoxRect.Height)
+            {
+                ball.Velocity *= new Vector2(1, -1);
+            }
+
+
+            MouseState ms = Mouse.GetState();
+            Vector2 clickPoint = new Vector2(ms.X, ms.Y);
+
+            if (ms.LeftButton == ButtonState.Pressed && !clicked && Vector2.Distance(clickPoint, ball.Center) < ball.BoundingBoxRect.Width/2)
+            {
+                //ball.Velocity *= new Vector2(1, 0);
+                //ball.Velocity += new Vector2(0, -800);
+                float cSpeed = ball.Velocity.Length();
+
+                Vector2 dir = ball.Center - clickPoint;
+                dir.Normalize();
+                dir.Y = Math.Abs(dir.Y) * -900;
+                dir.X *= 200;
+
+                ball.Velocity = dir;
+                clicked = true;
+            }
+            else if (ms.LeftButton == ButtonState.Released)
+            {
+                clicked = false;
+            }
+
+            // Set a maximum speed so we stay on screen
+            float maxSpeed = 600;
+
+            Vector2 vel = ball.Velocity;
+            float speed = vel.Length();
+            if (speed > 1000) speed = 1000;
+            vel.Normalize();
+            vel *= speed;
+            ball.Velocity = vel;
+
+            ball.Update(gameTime);
+
 
             base.Update(gameTime);
         }
