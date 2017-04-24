@@ -16,3 +16,8 @@ C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\obj\x86\Debug\Ball.exe
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\obj\x86\Debug\Ball.pdb
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\MorphBall.xnb
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\samus.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\spin_jump-Brandino480-2020916281.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\spin_jump-Brandino480-2020916281.wav
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\combobreaker.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\ultra.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\boing2_1.xnb

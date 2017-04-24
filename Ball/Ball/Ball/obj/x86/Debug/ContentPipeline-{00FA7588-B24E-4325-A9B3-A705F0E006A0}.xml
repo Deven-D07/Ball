@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\MorphBall.xnb</Output>
-      <Time>2017-04-21T11:22:46.6765725-04:00</Time>
+      <Time>2017-04-24T12:22:08.3553461-04:00</Time>
     </Item>
     <Item>
       <Source>samus.png</Source>
@@ -17,7 +17,43 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\samus.xnb</Output>
-      <Time>2017-04-21T11:12:43.7081512-04:00</Time>
+      <Time>2017-04-24T12:22:08.3713031-04:00</Time>
+    </Item>
+    <Item>
+      <Source>spin_jump-Brandino480-2020916281.wav</Source>
+      <Name>spin_jump-Brandino480-2020916281</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\spin_jump-Brandino480-2020916281.xnb</Output>
+      <Time>2017-04-24T12:46:29.8955566-04:00</Time>
+    </Item>
+    <Item>
+      <Source>combobreaker.wav</Source>
+      <Name>combobreaker</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\combobreaker.xnb</Output>
+      <Time>2017-04-24T13:01:26.6358121-04:00</Time>
+    </Item>
+    <Item>
+      <Source>ultra.wav</Source>
+      <Name>ultra</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\ultra.xnb</Output>
+      <Time>2017-04-24T13:01:33.5600658-04:00</Time>
+    </Item>
+    <Item>
+      <Source>boing2_1.wav</Source>
+      <Name>boing2_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\boing2_1.xnb</Output>
+      <Time>2017-04-24T13:02:01.3732151-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
