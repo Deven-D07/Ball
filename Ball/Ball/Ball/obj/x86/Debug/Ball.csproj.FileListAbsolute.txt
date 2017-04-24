@@ -21,3 +21,6 @@ C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\spin_
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\combobreaker.xnb
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\ultra.xnb
 C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\boing2_1.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\metroid2.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\Pericles14.xnb
+C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\Pericles14.spritefont

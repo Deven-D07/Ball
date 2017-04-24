@@ -20,7 +20,7 @@ namespace Ball
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D samus, spritesheet;
+        Texture2D samus, spritesheet, titleScreen;
         int score;
         Sprite ball;
         Boolean clicked = false;
@@ -28,10 +28,14 @@ namespace Ball
         SoundPlayer ultra;
         SoundPlayer combo;
         SoundPlayer boing;
+        SpriteFont Font1;
+        Vector2 FontPos;
         private float titleScreenTimer = 0f;
         private float titleScreenDelayTime = 1f;
+  
         enum GameStates { TitleScreen, Playing, GameOver };
         GameStates gameState = GameStates.TitleScreen;
+        MouseState ms2 = Mouse.GetState();
 
         public Game1()
         {
@@ -64,6 +68,7 @@ namespace Ball
             spriteBatch = new SpriteBatch(GraphicsDevice);
             samus = Content.Load<Texture2D>("samus");
             spritesheet = Content.Load<Texture2D>("MorphBall");
+            titleScreen = Content.Load<Texture2D>("metroid2");
             score = 0;
             ball = new Sprite(new Vector2(380, 0), spritesheet, new Rectangle(0,0 , 70, 70), new Vector2(0, 80));
 
@@ -71,7 +76,7 @@ namespace Ball
             boing = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\boing2_1.wav");
             ultra = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\ultra.wav");
             combo = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\combobreaker.wav");
-           
+            Font1 = Content.Load<SpriteFont>()
             // TODO: use this.Content to load your game content here
         }
 
@@ -123,16 +128,12 @@ namespace Ball
                         boing.Play();
                     }
 
-                    if (ball.Location.X > this.Window.ClientBounds.Width - ball.BoundingBoxRect.Width)
+                   /* if (ball.Location.X > this.Window.ClientBounds.Width - ball.BoundingBoxRect.Width)
                     {
                         ball.Velocity *= new Vector2(-1, 1);
                         boing.Play();
-                    }
+                    } */
 
-                    if (ball.Location.X < this.Window.ClientBounds.Width - ball.BoundingBoxRect.Width)
-                    {
-                        score--;
-                    }
 
 
                     MouseState ms = Mouse.GetState();
@@ -175,16 +176,25 @@ namespace Ball
                     ball.Update(gameTime);
 
 
+                    break;
 
-                    // TODO: Add your update logic here
+                case GameStates.GameOver:
+                    ball.Location = new Vector2(380, 0);
+                    ball.Velocity = new Vector2(0, 30);
 
-
-
+                    
+                    {
+                        gameState = GameStates.TitleScreen;
+                    }
+                    break;
             }
+
+
+            
                     base.Update(gameTime);
             
         }
-
+        
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -193,9 +203,29 @@ namespace Ball
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            if (gameState == GameStates.TitleScreen)
+            {
+                spriteBatch.Draw(titleScreen,
+                    new Rectangle(0, 0, this.Window.ClientBounds.Width,
+                        this.Window.ClientBounds.Height),
+                        Color.White);
+            }
 
-            spriteBatch.Draw(samus, Vector2.Zero, Color.White);
-            ball.Draw(spriteBatch);
+            if (gameState == GameStates.Playing) {
+                spriteBatch.Draw(samus, Vector2.Zero, Color.White);
+                ball.Draw(spriteBatch);
+
+                 
+
+                if (ball.Location.X > this.Window.ClientBounds.Width - ball.BoundingBoxRect.Width || ball.Location.Y > this.Window.ClientBounds.Height - ball.BoundingBoxRect.Height) {
+                    gameState = GameStates.GameOver;
+                }
+            }
+
+            if (gameState == GameStates.GameOver) {
+                
+            }
+            
             spriteBatch.End();
             // TODO: Add your drawing code here
 

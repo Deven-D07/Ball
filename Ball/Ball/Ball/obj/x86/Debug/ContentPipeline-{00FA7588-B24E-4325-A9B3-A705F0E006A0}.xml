@@ -55,6 +55,24 @@
       <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\boing2_1.xnb</Output>
       <Time>2017-04-24T13:02:01.3732151-04:00</Time>
     </Item>
+    <Item>
+      <Source>metroid2.png</Source>
+      <Name>metroid2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\metroid2.xnb</Output>
+      <Time>2017-04-24T13:25:08.5583316-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Pericles14.spritefont</Source>
+      <Name>Pericles14</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\eahscs\Documents\GitHub\Ball\Ball\Ball\Ball\bin\x86\Debug\Content\Pericles14.xnb</Output>
+      <Time>2017-04-24T13:40:44.161225-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{00FA7588-B24E-4325-A9B3-A705F0E006A0}</ContentProjectGUID>
