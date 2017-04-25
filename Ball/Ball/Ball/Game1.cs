@@ -28,11 +28,13 @@ namespace Ball
         SoundPlayer ultra;
         SoundPlayer combo;
         SoundPlayer boing;
+        SoundPlayer music;
         SpriteFont Font1;
-        Vector2 FontPos;
         private float titleScreenTimer = 0f;
         private float titleScreenDelayTime = 1f;
-  
+        private float playerDeathDelayTime = 10f;
+        private float playerDeathTimer = 0f;
+        private Vector2 scoreLocation = new Vector2(20, 10);
         enum GameStates { TitleScreen, Playing, GameOver };
         GameStates gameState = GameStates.TitleScreen;
         MouseState ms2 = Mouse.GetState();
@@ -72,11 +74,13 @@ namespace Ball
             score = 0;
             ball = new Sprite(new Vector2(380, 0), spritesheet, new Rectangle(0,0 , 70, 70), new Vector2(0, 80));
 
-            player = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\spin_jump-Brandino480-2020916281.wav");
-            boing = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\boing2_1.wav");
-            ultra = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\ultra.wav");
-            combo = new SoundPlayer("C:\\Users\\eahscs\\Documents\\GitHub\\Ball\\Ball\\Ball\\BallContent\\combobreaker.wav");
-            Font1 = Content.Load<SpriteFont>()
+            player = new SoundPlayer("C:\\Users\\eahscs\\Desktop\\Ball\\Ball\\Ball\\BallContent\\spin_jump-Brandino480-2020916281.wav");
+            boing = new SoundPlayer("C:\\Users\\eahscs\\Desktop\\Ball\\Ball\\Ball\\BallContent\\boing2_1.wav");
+            ultra = new SoundPlayer("C:\\Users\\eahscs\\Desktop\\Ball\\Ball\\Ball\\BallContent\\ultra.wav");
+            music = new SoundPlayer("C:\\Users\\eahscs\\Desktop\\Ball\\Ball\\Ball\\BallContent\\Killer_Instinct_XboxOne_Sabrewulf_Theme_Full_Versi.wav");
+            combo = new SoundPlayer("C:\\Users\\eahscs\\Desktop\\Ball\\Ball\\Ball\\BallContent\\combobreaker.wav");
+            Font1 = Content.Load<SpriteFont>(@"Pericles14");
+            music.PlayLooping();
             // TODO: use this.Content to load your game content here
         }
 
@@ -153,7 +157,7 @@ namespace Ball
                         ball.Velocity = dir;
                         clicked = true;
                         score++;
-                        if (score == 5)
+                        if (score >= 5)
                         {
                             ultra.Play();
                         }
@@ -181,8 +185,10 @@ namespace Ball
                 case GameStates.GameOver:
                     ball.Location = new Vector2(380, 0);
                     ball.Velocity = new Vector2(0, 30);
-
+                    playerDeathTimer +=
+                        (float)gameTime.ElapsedGameTime.TotalSeconds;
                     
+                    if (playerDeathTimer >= playerDeathDelayTime)
                     {
                         gameState = GameStates.TitleScreen;
                     }
@@ -201,7 +207,7 @@ namespace Ball
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
             if (gameState == GameStates.TitleScreen)
             {
@@ -212,18 +218,43 @@ namespace Ball
             }
 
             if (gameState == GameStates.Playing) {
+               
                 spriteBatch.Draw(samus, Vector2.Zero, Color.White);
                 ball.Draw(spriteBatch);
+                spriteBatch.DrawString(
+                  Font1,
+                  "Combo: " + score.ToString(),
+                  scoreLocation,
+                  Color.Cyan);
 
-                 
 
                 if (ball.Location.X > this.Window.ClientBounds.Width - ball.BoundingBoxRect.Width || ball.Location.Y > this.Window.ClientBounds.Height - ball.BoundingBoxRect.Height) {
                     gameState = GameStates.GameOver;
+                    combo.Play();
                 }
             }
 
             if (gameState == GameStates.GameOver) {
                 
+                spriteBatch.DrawString(
+                    Font1,
+                    "Combo: " + score.ToString(),
+                    scoreLocation,
+                    Color.White);
+
+                spriteBatch.DrawString(
+                    Font1,
+                    "CCCCCCOMBO BREAKER!!!!",
+                    new Vector2(
+                        this.Window.ClientBounds.Width / 2 -
+                         Font1.MeasureString("CCCCCCOMBO BREAKER!!!!").X / 2,
+                        50),
+                    Color.Cyan);
+                if(Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    gameState = GameStates.TitleScreen;
+                    score = 0;
+                }
             }
             
             spriteBatch.End();
